@@ -6,66 +6,65 @@ class Obstacles {
         this.w = 100;
         this.h = 10;
         this.c = color;
-
     }
 
-    placeOnCanvas() { // [x] 
-        fill( this.c )
+    // NOTE: positioning 
+    placeOnCanvas() { // DONE 
+        fill( this.c );
         rect( this.x, this.y, this.w, this.h );
     }
 
-    onCollision() { // BUG  
-        let isBelowPlatform = true; // isAbovePlatform = false
-        // is character below plattform?
-        if ( game.character.y > this.y ) {
-            if ( (game.character.x > (this.x - game.character.w*0.8)) && ((game.character.x + game.character.w) < (this.x + this.w + game.character.w*0.8)) ) {
-                console.log( 'below', 'in platform range' );
-                isBelowPlatform = true; // yes, character is below
-                return isBelowPlatform;
-            }
-        }
-        // is character above plattform?
-        else if ( game.character.y < this.y) {
-            // if character is in range (from .x to .w) of platform, then ask...
-            if ( (game.character.x > (this.x - game.character.w*0.8)) && ((game.character.x + game.character.w) < (this.x + this.w + game.character.w*0.8)) ) {
-                console.log( 'above', 'in platform range' );
-                isBelowPlatform = false; // no, character is above
-                return isBelowPlatform;
-            }
-        }
+    // NOTE: platform collision logic 
+    onCollision(character) { // DONE 
+        // reset characters jumps 
+        // COMMENT: not sure if this is the correct position?! 
+        // COMMENT: but, I need all obstacles.height for this comparision. 
+        // COMMENT: i think it's only available here in Obstacles-Class, no?! 
+        if ( (character.y === HEIGHT - character.h)  ||  (character.y === this.y - character.h + 1) ) { character.jumps = true };
+
+        // Logic to make player stay on platforms 
+        if (
+            (character.velocity > 0 ) && // don't interrupt gravity, keep momentum
+            (character.x > (this.x - character.w*0.8)) && // start-position of platform-boundary
+            ((character.x + character.w) < (this.x + this.w + character.w*0.8)) && // end-position of platform-boundary
+            (character.y < this.y + this.h - character.h) && // character is below-platform
+            (character.y >= this.y - character.h) // character is above- OR (>=) stays on-platform
+            ) { return true };
     }
 }
+// NOTE: specific platforms, each with different interactions 
 class Platform extends Obstacles {
 
-    onCollision() { // BUG 
-        game.character.stayOnPlatform( this.y, super.onCollision() )
+    onCollision(character) { // DONE 
+        if ( super.onCollision(character) ) { character.stayOnPlatform( this.y ) };
     }
 }
 class Key extends Obstacles {
 
-    onCollision() { // [x] 
-        if ( super.onCollision() ) {
-            game.character.stayOnPlatform(this.y); // FIXME 
-            game.character.collectKeyOnPlatform();
+    onCollision(character) { // DONE 
+        if ( super.onCollision(character) ) {
+            character.stayOnPlatform(this.y);
+            character.collectKeyOnPlatform();
         }
     }
 }
 class Exit extends Obstacles {
 
-    onCollision() { // [x] 
-        if ( super.onCollision() ) {
-            game.character.stayOnPlatform(this.y);// FIXME 
-            game.character.winsOnPlatform();
+    onCollision(character) { // DONE 
+        if ( super.onCollision(character) ) {
+            character.stayOnPlatform(this.y);
+            character.winsOnPlatform();
         }
     }
 }
 class Trap extends Obstacles {
 
-    onCollision() { // [x] 
-        if ( (game.character.x > (this.x - game.character.w*0.8)) && ((game.character.x + game.character.w) < (this.x + this.w + game.character.w*0.8)) ) {
+    onCollision(character) { // DONE 
+        // if character is in platform range (x-w), then...
+        if ( (character.x > (this.x - character.w*0.8)) && ((character.x + character.w) < (this.x + this.w + character.w*0.8)) ) {
             // if character goes below platform, then character dies.
-            if ( (game.character.y + game.character.h) > this.y ) {
-                game.character.diesOnPlatform();
+            if ( (character.y + character.h) > this.y ) {
+                character.diesOnPlatform();
             }
         }
     }

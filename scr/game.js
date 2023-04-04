@@ -4,17 +4,16 @@ class Game {
         this.character = new Character();
         this.characterImg;
 
-        this.key = new Key(50, 420, 'blue');
-        this.exit = new Exit( 250, 420, 'green' );
-        this.platform = new Platform( 400, 420, 'black' );
+        this.platform = new Platform( 200, 420, 'black' );
+        this.key = new Key(50, 320, 'blue');
+        this.exit = new Exit( 250, 220, 'green' );
         this.trap = new Trap( 600, 490, 'red' );
     }
 
     preloadImages() {
-        // [x] load default character image 
-        this.characterImg = loadImage('assets/dancing-potato.gif');
-        // [ ] image orientation for move left
-        // [ ] image orientation for move right
+        this.characterImg = loadImage('assets/dancing-potato.gif'); // DONE: load default character image 
+        // TODO: image orientation for move left
+        // TODO: image orientation for move right
     }
 
     drawLevel() {
@@ -27,10 +26,10 @@ class Game {
     
     eventListener() {
         // event listener
-        this.platform.onCollision();
-        this.key.onCollision();
-        this.exit.onCollision();
-        this.trap.onCollision();
+        this.platform.onCollision(this.character);
+        this.key.onCollision(this.character);
+        this.exit.onCollision(this.character);
+        this.trap.onCollision(this.character);
     }
 
     drawCharacter() {

@@ -1,7 +1,6 @@
 const WIDTH = 800;
 const HEIGHT = 500;
 const game = new Game();
-let jumpDelay = 0;
 
 function preload() {
   game.preloadImages();
@@ -12,7 +11,7 @@ function setup() {
 }
 
 function draw() {
-  clear()
+  clear();
   game.drawCharacter();
   game.drawLevel();
   game.eventListener();
@@ -21,7 +20,7 @@ function draw() {
 function keyPressed() {
   if ( keyCode === 39 ) game.character.moveRight();
   if ( keyCode === 37 ) game.character.moveLeft();
-  if ( jumpDelay === 0 ) if ( keyCode === 38 ) game.character.jump(jumpDelay);
+  if ( keyCode === 38 ) game.character.jump();
   if ( keyCode === 40 ) game.character.moveDown();
 }
 

@@ -11,8 +11,7 @@ body {
   align-items: center;
 }
 
-canvas {
-  /* FIXME: make better look  */
+canvas { /* TODO: make better look  */
   background-color: white;
   border: 5px solid black;
 }
