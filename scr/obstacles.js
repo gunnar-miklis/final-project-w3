@@ -16,12 +16,6 @@ class Obstacles {
 
     // NOTE: platform collision logic 
     onCollision(character) { // DONE 
-        // reset characters jumps 
-        // COMMENT: not sure if this is the correct position?! 
-        // COMMENT: but, I need all obstacles.height for this comparision. 
-        // COMMENT: i think it's only available here in Obstacles-Class, no?! 
-        if ( (character.y === HEIGHT - character.h)  ||  (character.y === this.y - character.h + 1) ) { character.jumps = true };
-
         // Logic to make player stay on platforms 
         if (
             (character.velocity > 0 ) && // don't interrupt gravity, keep momentum
@@ -29,7 +23,14 @@ class Obstacles {
             ((character.x + character.w) < (this.x + this.w + character.w*0.8)) && // end-position of platform-boundary
             (character.y < this.y + this.h - character.h) && // character is below-platform
             (character.y >= this.y - character.h) // character is above- OR (>=) stays on-platform
-            ) { return true };
+            ) 
+            {
+            // if character stays on platform...
+                // reset jumps / allow to jump again
+                if ( character.y === this.y - character.h + 1 ) { character.jumps = true };
+                // return 'true' / make below's platform-interactions available
+                return true 
+            };
     }
 }
 // NOTE: specific platforms, each with different interactions 

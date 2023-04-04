@@ -27,3 +27,13 @@ function keyPressed() {
 function sleep(duration) {
   return new Promise( resolve => setTimeout(resolve, duration) );
 }
+
+function statusMessage(message, size, color, seconds) {
+  fill(color);
+  textSize(size);
+  textAlign(CENTER);
+  text(message,WIDTH*0.3,HEIGHT*0.2);
+  if ( seconds ) {
+    noLoop(); sleep(seconds).then( () => { loop() } );
+  }
+}

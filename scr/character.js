@@ -20,13 +20,22 @@ class Character {
         
         // stay inside canvas 
         if ( this.y >= HEIGHT - this.h ) this.y = HEIGHT - this.h;
-
-        // place player 
-        image( game.characterImg, this.x, this.y, this.w, this.h );
         
         // hold keys to move 
-        if ( keyIsDown(LEFT_ARROW) ) this.moveLeft();
-        if ( keyIsDown(RIGHT_ARROW) ) this.moveRight();
+        if ( keyIsDown(LEFT_ARROW) ) {
+            // place player, orientation left
+            image( game.characterImgLeft, this.x, this.y, this.w, this.h );
+            this.moveLeft();
+        }
+        else if ( keyIsDown(RIGHT_ARROW) ) {
+            // place player, orientation rigth
+            image( game.characterImgRight, this.x, this.y, this.w, this.h );
+            this.moveRight();
+        }
+        else {
+            // place player, idle = dancing animation
+            image( game.characterImg, this.x, this.y, this.w, this.h );
+        }
     }
     resetCharacter() { // DONE 
         this.x = WIDTH - this.w;
@@ -36,11 +45,11 @@ class Character {
     }
     
     // NOTE: movments 
-    moveLeft() { // TODO: image orientation left
+    moveLeft() { // DONE 
         // stay inside canvas width 
         if ( this.x > 0 ) this.x -= 5;
     }
-    moveRight() { // TODO: image orientation right
+    moveRight() { // DONE 
         // stay inside canvas width 
         if ( this.x < WIDTH - this.w ) this.x += 5; 
     }
@@ -64,44 +73,28 @@ class Character {
             this.velocity = 0; // reset velocity
     }
     collectKeyOnPlatform() { // DONE 
-        // character already has the key
-        // else: character will collect key
-        if ( this.hasKey ) {
-            fill('blue');
-            textSize(30);
-            text('key already\n collected!',this.x, this.y-100);
-        } else {
+        // if character has no key: collect key
+        // else: message "already have key"
+        if ( !this.hasKey ) {
             this.hasKey = true;
-            fill('orange');
-            textSize(50);
-            text('key collected!',this.x, this.y-100);
-            noLoop(); sleep(600).then( () => { loop() } ); // wait 0.6s
+            statusMessage('key collected',50,'orange',600);
+        } else {
+            statusMessage('key already collected',30,'blue');
         }
     }
     winsOnPlatform() { // DONE 
-        // if player has key = win
-        // else: message something
+        // if player has key: win
+        // else: message "need to collect key first"
         if ( this.hasKey ) {
-            fill('green');
-            textSize(100);
-            text('WIN!',this.x,this.y-100);
-            noLoop(); sleep(2000).then( () => { loop() } ); // wait 2s
+            statusMessage('WIN!',100,'green',2000);
             this.resetCharacter();
         } else {
-            fill('blue');
-            textSize(30);
-            text('need the key first.',this.x,this.y-100);
+            statusMessage('need the key first',30,'blue');
         }
     }
     diesOnPlatform() { // DONE 
-        // death
-        fill('red');
-        textSize(100);
-        text('dead',WIDTH*0.5,HEIGHT*0.5);
-        noLoop(); sleep(2000).then( () => { loop() } ); // wait 2s
-
-        // reset position, jumps and hasKey to initial values
+        // reset player stats, position and jumps
+        statusMessage('dead',100,'red',2000);
         this.resetCharacter();
     }
-
 }
