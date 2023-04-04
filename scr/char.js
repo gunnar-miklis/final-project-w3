@@ -1,4 +1,4 @@
-class Char {
+class Character {
     
     constructor() {
         this.w = 50;
@@ -12,7 +12,7 @@ class Char {
     }
 
     // NOTE: positioning 
-    placeChar() { // [x] 
+    placeCharacter() { // [x] 
         // [x] jump behavior 
         this.velocity += this.gravity; 
         this.y += this.velocity;
@@ -21,7 +21,7 @@ class Char {
         if ( this.y >= HEIGHT - this.h ) this.y = HEIGHT - this.h; 
 
         // [x] place player 
-        image( game.charImg, this.x, this.y, this.w, this.h );
+        image( game.characterImg, this.x, this.y, this.w, this.h );
         
         // [x] hold keys to move 
         if ( keyIsDown(LEFT_ARROW) ) this.moveLeft()
@@ -64,12 +64,10 @@ class Char {
 
         if ( isBelowPlatform ) {
             // BUG 
-            console.log( 'isBelowPlatform', isBelowPlatform );
-            this.y = platformY - this.h; // stay on platform
-            this.velocity = 0; // reset velocity
         } else {
             // BUG 
-            console.log( 'isBelowPlatform', isBelowPlatform );
+            this.y = platformY - this.h; // stay on platform
+            this.velocity = 0; // reset velocity
         }
     }
     collectKeyOnPlatform() { // [x] 

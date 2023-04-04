@@ -1,8 +1,8 @@
 class Game {
 
     constructor() {
-        this.char = new Char();
-        this.charImg;
+        this.character = new Character();
+        this.characterImg;
 
         this.key = new Key(50, 420, 'blue');
         this.exit = new Exit( 250, 420, 'green' );
@@ -11,8 +11,8 @@ class Game {
     }
 
     preloadImages() {
-        // [x] load default char image 
-        this.charImg = loadImage('assets/dancing-potato.gif');
+        // [x] load default character image 
+        this.characterImg = loadImage('assets/dancing-potato.gif');
         // [ ] image orientation for move left
         // [ ] image orientation for move right
     }
@@ -33,9 +33,9 @@ class Game {
         this.trap.onCollision();
     }
 
-    drawChar() {
+    drawCharacter() {
         // place character
-        this.char.placeChar();
+        this.character.placeCharacter();
     }
 
 }

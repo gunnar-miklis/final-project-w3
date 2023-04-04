@@ -6,6 +6,7 @@ class Obstacles {
         this.w = 100;
         this.h = 10;
         this.c = color;
+
     }
 
     placeOnCanvas() { // [x] 
@@ -15,18 +16,20 @@ class Obstacles {
 
     onCollision() { // BUG  
         let isBelowPlatform = true; // isAbovePlatform = false
-        // is char above plattform?
-        if ( game.char.y < this.y) {
-            // if char is in range (from .x to .w) of platform, then ask...
-            if ( (game.char.x > (this.x - game.char.w*0.8)) && ((game.char.x + game.char.w) < (this.x + this.w + game.char.w*0.8)) ) {
-                isBelowPlatform = false; // no, char is above
+        // is character below plattform?
+        if ( game.character.y > this.y ) {
+            if ( (game.character.x > (this.x - game.character.w*0.8)) && ((game.character.x + game.character.w) < (this.x + this.w + game.character.w*0.8)) ) {
+                console.log( 'below', 'in platform range' );
+                isBelowPlatform = true; // yes, character is below
                 return isBelowPlatform;
             }
         }
-        // is char below plattform?
-        if ( game.char.y > this.y ) {
-            if ( (game.char.x > (this.x - game.char.w*0.8)) && ((game.char.x + game.char.w) < (this.x + this.w + game.char.w*0.8)) ) {
-                isBelowPlatform = true; // yes, char is below
+        // is character above plattform?
+        else if ( game.character.y < this.y) {
+            // if character is in range (from .x to .w) of platform, then ask...
+            if ( (game.character.x > (this.x - game.character.w*0.8)) && ((game.character.x + game.character.w) < (this.x + this.w + game.character.w*0.8)) ) {
+                console.log( 'above', 'in platform range' );
+                isBelowPlatform = false; // no, character is above
                 return isBelowPlatform;
             }
         }
@@ -35,15 +38,15 @@ class Obstacles {
 class Platform extends Obstacles {
 
     onCollision() { // BUG 
-        game.char.stayOnPlatform( this.y, super.onCollision() )
+        game.character.stayOnPlatform( this.y, super.onCollision() )
     }
 }
 class Key extends Obstacles {
 
     onCollision() { // [x] 
         if ( super.onCollision() ) {
-            game.char.stayOnPlatform(this.y); // FIXME 
-            game.char.collectKeyOnPlatform();
+            game.character.stayOnPlatform(this.y); // FIXME 
+            game.character.collectKeyOnPlatform();
         }
     }
 }
@@ -51,18 +54,18 @@ class Exit extends Obstacles {
 
     onCollision() { // [x] 
         if ( super.onCollision() ) {
-            game.char.stayOnPlatform(this.y);// FIXME 
-            game.char.winsOnPlatform();
+            game.character.stayOnPlatform(this.y);// FIXME 
+            game.character.winsOnPlatform();
         }
     }
 }
 class Trap extends Obstacles {
 
     onCollision() { // [x] 
-        if ( (game.char.x > (this.x - game.char.w*0.8)) && ((game.char.x + game.char.w) < (this.x + this.w + game.char.w*0.8)) ) {
-            // if char goes below platform, then char dies.
-            if ( (game.char.y + game.char.h) > this.y ) {
-                game.char.diesOnPlatform();
+        if ( (game.character.x > (this.x - game.character.w*0.8)) && ((game.character.x + game.character.w) < (this.x + this.w + game.character.w*0.8)) ) {
+            // if character goes below platform, then character dies.
+            if ( (game.character.y + game.character.h) > this.y ) {
+                game.character.diesOnPlatform();
             }
         }
     }

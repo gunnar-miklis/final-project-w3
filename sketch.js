@@ -13,16 +13,16 @@ function setup() {
 
 function draw() {
   clear()
-  game.drawChar();
+  game.drawCharacter();
   game.drawLevel();
   game.eventListener();
 }
 
 function keyPressed() {
-  if ( keyCode === 39 ) game.char.moveRight();
-  if ( keyCode === 37 ) game.char.moveLeft();
-  if ( jumpDelay === 0 ) if ( keyCode === 38 ) game.char.jump(jumpDelay);
-  if ( keyCode === 40 ) game.char.moveDown();
+  if ( keyCode === 39 ) game.character.moveRight();
+  if ( keyCode === 37 ) game.character.moveLeft();
+  if ( jumpDelay === 0 ) if ( keyCode === 38 ) game.character.jump(jumpDelay);
+  if ( keyCode === 40 ) game.character.moveDown();
 }
 
 function sleep(duration) {
