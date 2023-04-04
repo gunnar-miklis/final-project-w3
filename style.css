@@ -1,0 +1,26 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  /* FIXME: make better look  */
+  background-color: white;
+  border: 5px solid black;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+h2 {
+  color: #f07b7b;
+  font-weight: 500;
+}
