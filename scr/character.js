@@ -13,7 +13,7 @@ class Character {
     }
 
     // NOTE: positioning 
-    placeCharacter() { // DONE 
+    update() { // DONE 
         // jump behavior 
         this.velocity += this.gravity; 
         this.y += this.velocity;
@@ -88,6 +88,7 @@ class Character {
         if ( this.hasKey ) {
             statusMessage('WIN!',100,'green',2000);
             this.resetCharacter();
+            gameIsStarted = false;
         } else {
             statusMessage('need the key first',30,'blue');
         }

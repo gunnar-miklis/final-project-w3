@@ -9,7 +9,7 @@ class Obstacles {
     }
 
     // NOTE: positioning 
-    placeOnCanvas() { // DONE 
+    update() { // DONE 
         fill( this.c );
         rect( this.x, this.y, this.w, this.h );
     }
@@ -61,12 +61,6 @@ class Exit extends Obstacles {
 class Trap extends Obstacles {
 
     onCollision(character) { // DONE 
-        // if character is in platform range (x-w), then...
-        if ( (character.x > (this.x - character.w*0.8)) && ((character.x + character.w) < (this.x + this.w + character.w*0.8)) ) {
-            // if character goes below platform, then character dies.
-            if ( (character.y + character.h) > this.y ) {
-                character.diesOnPlatform();
-            }
-        }
+        if ( super.onCollision(character) ) { character.diesOnPlatform() };
     }
 }
