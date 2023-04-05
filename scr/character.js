@@ -11,6 +11,14 @@ class Character {
         this.x = WIDTH - this.w;
         this.y = HEIGHT - this.h;
     }
+    statusMessage(message, color, seconds) {
+        fill( color );
+        textFont( fontMedium );
+        textSize( 30 );
+        textAlign( CENTER );
+        text( message, game.character.x + 25, game.character.y - 50 ); // text above character's head
+        if ( seconds ) { noLoop(); sleep(seconds).then( () => { loop() } ) } // wait
+    }
 
     // NOTE: positioning 
     update() { // DONE 
@@ -39,9 +47,10 @@ class Character {
     }
     resetCharacter() { // DONE 
         this.x = WIDTH - this.w;
-        this.y = 0 - this.h;
-        this.hasKey = false;
+        this.y = HEIGHT - this.h;
         this.jumps = true;
+        this.hasKey = false;
+        console.log( 'RESET' );
     }
     
     // NOTE: movments 
@@ -77,25 +86,26 @@ class Character {
         // else: message "already have key"
         if ( !this.hasKey ) {
             this.hasKey = true;
-            statusMessage('key collected',50,'orange',600);
+            this.statusMessage('key\ncollected','orange',600);
         } else {
-            statusMessage('key already collected',30,'blue');
+            this.statusMessage('key already\ncollected','blue');
         }
     }
-    winsOnPlatform() { // DONE 
+    winsOnPlatform() { // FIXME 
         // if player has key: win
         // else: message "need to collect key first"
         if ( this.hasKey ) {
-            statusMessage('WIN!',100,'green',2000);
-            this.resetCharacter();
-            gameIsStarted = false;
+            game.printText('Success!','green',1000);
+            currentLevel++ // FIXME 
+            this.resetCharacter(); // FIXME: key=false, but we are still in level 0, key=true 
+            return true;
         } else {
-            statusMessage('need the key first',30,'blue');
+            this.statusMessage('need a\nkey first','blue');
         }
     }
     diesOnPlatform() { // DONE 
         // reset player stats, position and jumps
-        statusMessage('dead',100,'red',2000);
+        game.printText('X  _  X','red',1300);
         this.resetCharacter();
     }
 }

@@ -1,25 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300;400;500;600;700;900;1000&display=swap');
+
 html, body {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Sofia Sans Condensed', sans-serif;
+  background-color: #f9f9f9;
+}
+
+main {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
 
-canvas { /* TODO: make better look  */
-  background-color: white;
-  border: 5px solid black;
+h1,h2 {
+  margin: 0;
+}
+h1 {
+  margin-top: 15px;
 }
 
-h1 {
-  margin-bottom: 10px;
+#div-p5 {
+  position: relative;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  border: 5px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
 }
-h2 {
-  color: #f07b7b;
-  font-weight: 500;
+
+canvas {
+  background-color: white;
+  border: 5px solid black;
+  margin-bottom: -5px;
+}
+
+select {
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+}
+
+button {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
 }
