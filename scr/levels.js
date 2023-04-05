@@ -1,6 +1,6 @@
-class Levels {
+class Levels { // DONE 
 
-    constructor() { // DONE 
+    constructor() {
         this.title;
         this.key = new Key( 650, 300, 'blue' );
         this.exit = new Exit( 50, 300, 'green' );
@@ -11,18 +11,18 @@ class Levels {
         this.platform3 = new Platform( 450, 200, 'black' );
     }
 
-    setLevelTitle(insertTitle) {
+    printTextLevelTitle(insertTitle) {
         if ( gameIsStarted ) {
             fill('black');
             textFont(fontRegular);
-            textSize(30);
-            textAlign(LEFT);
-            text(insertTitle,10,40);
+            textSize(25);
+            textAlign(CENTER);
+            text(insertTitle,WIDTH/2,200+40);
         }
     }
 
     update() {
-        this.setLevelTitle(this.title);
+        this.printTextLevelTitle(this.title);
         this.key.update();
         this.exit.update();
         this.trap1.update();
@@ -42,7 +42,26 @@ class Levels {
         this.platform3.onCollision(game.character);
     }
 }
-class Level1 extends Levels {
+class Level0 extends Levels {
+    constructor() {
+        super();
+        this.title = "i'm a dancin' potato\nbit***eeesss !!!\n\n\ntiny\npotato\nwohohhh!";
+        this.key = new Platform( 50, 450, 'black' );
+        this.exit = new Platform( 150, 400, 'black' );
+        this.trap1 = new Platform( 250, 350, 'black' );
+        this.trap2 = new Platform( 350, 300, 'black' );
+        this.platform1 = new Platform( 450, 350, 'black' );
+        this.platform2 = new Platform( 550, 400, 'black' );
+        this.platform3 = new Platform( 650, 450, 'black' );
+    }
+
+    events() {
+        super.events();
+        game.character.hasKey = true;
+    }
+}
+// NOTE: L 1 
+class Level1 extends Levels { // DONE 
 
     constructor() {
         super();
@@ -52,40 +71,48 @@ class Level1 extends Levels {
         this.trap2 = new Platform( 350, 200, 'black' );
     }
 
-    update() {
-        super.update();
-    }
-
     events() {
         super.events();
         game.character.hasKey = true;
     }
 }
-class Level2 extends Levels {
+// NOTE: L 2 
+class Level2 extends Levels { // DONE 
 
     constructor() {
         super();
-        this.title = 'find a way to the exit';
+        this.title = 'find a way to access the exit';
         this.trap1 = new Platform( 500, 491, 'black' );
         this.trap2 = new Platform( 350, 200, 'black' );
     }
-
-    update() {
-        super.update();
-    }
-
-    events() {
-        super.events();
-    }
 }
-class Level3 extends Levels {
+// NOTE: L 3 
+class Level3 extends Levels { // DONE 
 
     constructor() {
         super();
         this.title = 'the floor is lava';
-    }
-
-    events() {
-        super.events();
+        this.trap2 = new Platform( 350, 200, 'black' );
     }
 }
+// NOTE: L 4 
+class Level4 extends Levels { // DONE 
+
+    constructor() {
+        super();
+        this.title = "more difficult";
+    }
+}
+// NOTE: L 5 
+class Level5 extends Levels { // DONE 
+
+    constructor() {
+        super();
+        this.title = "don't trust your eyes";
+        this.trap1 = new Trap( 500, 491, 'black' );
+        this.trap2 = new Trap( 350, 200, 'black' );
+    }
+}
+// NOTE: L 6 
+
+// TODO: Add more levels 

@@ -7,7 +7,7 @@ html, body {
 
 body {
   font-family: 'Sofia Sans Condensed', sans-serif;
-  background-color: #f9f9f9;
+  background-color: #eee;
 }
 
 main {
@@ -15,18 +15,24 @@ main {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
-h1,h2 {
+#landing-page {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+#landing-page h1, #landing-page h2 {
   margin: 0;
 }
-h1 {
+#landing-page h1 {
   margin-top: 15px;
 }
 
 #div-p5 {
   position: relative;
-  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  box-shadow: 0 0 8px rgba(0,0,0,0.6);
   border: 5px solid black;
   border-radius: 5px;
   margin-top: 10px;
@@ -34,18 +40,24 @@ h1 {
 
 canvas {
   background-color: white;
-  border: 5px solid black;
   margin-bottom: -5px;
 }
 
-select {
+#div-p5 > button {
+  width: 200px;
   position: absolute;
-  bottom: 50px;
-  left: 10px;
+  top: 60%;
+  left: calc( 50% - 100px );
+  padding: 30px;
 }
 
-button {
+#menu {
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+#menu select, #menu h3 {
+  margin-bottom: 10px;
 }

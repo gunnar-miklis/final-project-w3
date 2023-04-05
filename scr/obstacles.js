@@ -1,4 +1,4 @@
-class Obstacles {
+class Obstacles { // DONE 
     
     constructor(x, y, color) {
         this.x = x;

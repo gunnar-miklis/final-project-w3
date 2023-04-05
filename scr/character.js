@@ -1,4 +1,4 @@
-class Character {
+class Character { // DONE 
     
     constructor() {
         this.w = 50;
@@ -11,10 +11,11 @@ class Character {
         this.x = WIDTH - this.w;
         this.y = HEIGHT - this.h;
     }
-    statusMessage(message, color, seconds) {
-        fill( color );
+    printTextCharacter(message, color, seconds) {
+        // fill( color ); // COMMENT: style y/n? 
+        fill ( 'black' );
         textFont( fontMedium );
-        textSize( 30 );
+        textSize( 20 );
         textAlign( CENTER );
         text( message, game.character.x + 25, game.character.y - 50 ); // text above character's head
         if ( seconds ) { noLoop(); sleep(seconds).then( () => { loop() } ) } // wait
@@ -50,7 +51,6 @@ class Character {
         this.y = HEIGHT - this.h;
         this.jumps = true;
         this.hasKey = false;
-        console.log( 'RESET' );
     }
     
     // NOTE: movments 
@@ -86,26 +86,24 @@ class Character {
         // else: message "already have key"
         if ( !this.hasKey ) {
             this.hasKey = true;
-            this.statusMessage('key\ncollected','orange',600);
+            this.printTextCharacter('key\ncollected','orange',900);
         } else {
-            this.statusMessage('key already\ncollected','blue');
+            this.printTextCharacter('key already\ncollected','blue');
         }
     }
-    winsOnPlatform() { // FIXME 
-        // if player has key: win
+    winsOnPlatform() { // DONE 
+        // if player has key: win and go to next level
         // else: message "need to collect key first"
         if ( this.hasKey ) {
-            game.printText('Success!','green',1000);
-            currentLevel++ // FIXME 
-            this.resetCharacter(); // FIXME: key=false, but we are still in level 0, key=true 
-            return true;
+            game.printTextCentered('Success!','green',1500);
+            nextLevel();
         } else {
-            this.statusMessage('need a\nkey first','blue');
+            this.printTextCharacter('need a\nkey first','blue');
         }
     }
     diesOnPlatform() { // DONE 
         // reset player stats, position and jumps
-        game.printText('X  _  X','red',1300);
+        game.printTextCentered('potato takes a lava bath','red',1500);
         this.resetCharacter();
     }
 }
