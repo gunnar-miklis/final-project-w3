@@ -10,8 +10,9 @@ class Obstacles { // DONE
 
     // NOTE: positioning 
     update() { // DONE 
+        noStroke();
         fill( this.c );
-        rect( this.x, this.y, this.w, this.h );
+        rect( this.x, this.y, this.w, this.h, 1,1,1,1 ); // 1 = border radius;
     }
 
     // NOTE: platform collision logic 
