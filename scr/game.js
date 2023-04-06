@@ -6,9 +6,8 @@ class Game { // DONE
         this.characterImgLeft;
         this.characterImgRight;
     }
-    printTextCentered( message, color, seconds ) {
+    printTextCentered( message, seconds ) {
         background(0);
-        // fill( color ); // COMMENT: style y/n? 
         fill( 'white' )
         textSize( 40 );
         textFont( fontMedium );
@@ -39,11 +38,11 @@ class Game { // DONE
         if ( level ) { level.update() }
         if ( activeLevelId > levelList.length-1 ) {
             activeLevelId--;
-            game.printTextCentered('The End.','white');
+            game.printTextCentered('The End.');
             noLoop();
         } 
     }
     eventListener(level) { // DONE
-        if ( level ) { level.events() }
+        if ( level ) { level.events(game.character) }
     }
 }
