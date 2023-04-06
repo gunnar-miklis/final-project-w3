@@ -40,8 +40,8 @@ let selectedLevel; // dropdown menu
 // add levels to the dropdown menu, but ONLY, when they have been started already.
 function addFinishedLevelToDropdown() {
     // create <option> tags
-    // levelList.forEach( (level) => { if ( level.isStarted ) selectedLevel.option( level.name, level.name ) });
-    levelList.forEach( (level) => { selectedLevel.option( level.description, level.name ) }); // TESTING 
+    levelList.forEach( (level) => { if ( level.isStarted ) selectedLevel.option( level.name, level.name ) });
+    // levelList.forEach( (level) => { selectedLevel.option( level.description, level.name ) }); // TESTING 
 }
 function nextLevel() {
     // transition screen
