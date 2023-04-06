@@ -12,12 +12,12 @@ class Character { // DONE
         this.y = HEIGHT - this.h;
     }
     printTextCharacter(message, color, seconds) {
-        // fill( color ); // COMMENT: style y/n? 
-        fill ( 'black' );
+        fill( color );
         textFont( fontMedium );
+        textFont("Segoe UI Symbol");
         textSize( 20 );
         textAlign( CENTER );
-        text( message, game.character.x + 25, game.character.y - 50 ); // text above character's head
+        text( message, game.character.x + 25, game.character.y - 35 ); // text above character's head
         if ( seconds ) { noLoop(); sleep(seconds).then( () => { loop() } ) } // wait
     }
 
@@ -45,12 +45,15 @@ class Character { // DONE
             // place player, idle = dancing animation
             image( game.characterImg, this.x, this.y, this.w, this.h );
         }
+
+        if ( this.hasKey ) this.printTextCharacter('🔑','orange');
     }
     resetCharacter() { // DONE 
         this.x = WIDTH - this.w;
         this.y = HEIGHT - this.h;
         this.jumps = true;
         this.hasKey = false;
+        counter = 0;
     }
     
     // NOTE: movments 
@@ -85,21 +88,20 @@ class Character { // DONE
         // if character has no key: collect key
         // else: message "already have key"
         if ( !this.hasKey ) {
-            this.hasKey = true;
-            this.printTextCharacter('key\ncollected','orange',900);
-        } else {
-            this.printTextCharacter('key already\ncollected','blue');
-        }
+            this.hasKey = true
+            // this.printTextCharacter('key\ncollected','orange',900); // TESTING 
+        } // else { this.printTextCharacter('key already\ncollected','blue') } // TESTING 
+
+        // feature for level 3
+        if ( frameCount%40 === 0 ) counter++;
     }
     winsOnPlatform() { // DONE 
         // if player has key: win and go to next level
         // else: message "need to collect key first"
         if ( this.hasKey ) {
-            game.printTextCentered('Success!','green',1500);
+            // game.printTextCentered('Success!','green',1500); // TESTING 
             nextLevel();
-        } else {
-            this.printTextCharacter('need a\nkey first','blue');
-        }
+        } // else { this.printTextCharacter('need a\nkey first','blue') } // TESTING 
     }
     diesOnPlatform() { // DONE 
         // reset player stats, position and jumps
