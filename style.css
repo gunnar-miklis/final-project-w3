@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300;400;500;600;700;900;1000&display=swap');
 
+/* NOTE: general  */
 html, body {
   margin: 0;
   padding: 0;
 }
-
 body {
   font-family: 'Sofia Sans Condensed', sans-serif;
   background-color: #eee;
 }
 
+/* NOTE: canvas  */
 main {
   display: flex;
   flex-flow: column nowrap;
@@ -17,47 +18,73 @@ main {
   align-items: center;
   margin-top: 20px;
 }
-
-#landing-page {
-  position: absolute;
-  top: 0;
-  left: 10px;
-}
-#landing-page h1, #landing-page h2 {
-  margin: 0;
-}
-#landing-page h1 {
-  margin-top: 15px;
-}
-
 #div-p5 {
   position: relative;
   box-shadow: 0 0 8px rgba(0,0,0,0.6);
   border: 5px solid black;
   border-radius: 5px;
   margin-top: 10px;
-}
 
+  display:flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
 canvas {
   background-color: white;
-  margin-bottom: -5px;
 }
 
-#div-p5 > button {
-  width: 200px;
+/* NOTE: title  */
+#title {
   position: absolute;
-  top: 60%;
-  left: calc( 50% - 100px );
-  padding: 30px;
+  top: 0;
+  left: 10px;
+}
+#title h1,
+#title h2 {
+  margin: 0;
+}
+#title h1 {
+  margin-top: 15px;
 }
 
+/* NOTE: menu  */
 #menu {
   position: absolute;
-  bottom: 15px;
-  left: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-flow: column nowrap;
 }
 #menu select, #menu h3 {
   margin-bottom: 10px;
+}
+#menu button, 
+#menu select {
+  padding: 7px 5px;
+  font-family: 'Sofia Sans Condensed', sans-serif;
+  font-size: 110%;
+  font-weight: 700;
+  text-align: left;
+  border-radius: 3px;
+}
+#menu select {
+  border: 3px solid #ebebeb;
+  background-color: #eee;
+  color: black;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+#menu button {
+  border: 3px solid #383838;
+  background-color: #333;
+  color: #eee;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+#menu select:hover, 
+#menu button:hover {
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+#menu button:hover {
+  color: white;
 }

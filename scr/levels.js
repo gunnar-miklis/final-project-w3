@@ -45,7 +45,7 @@ class Levels { // DONE
 class Level0 extends Levels {
     constructor() {
         super();
-        this.title = "i'm a dancin' potato\nbit***eeesss !!!\n\n\ntiny\npotato\nwohohhh!";
+        this.title = "dancin' potato\nohhh yeahhh !!!\n\n\ntiny\npotato\nwohohhh!";
         this.key = new Platform( 50, 450, 'black' );
         this.exit = new Platform( 150, 400, 'black' );
         this.trap1 = new Platform( 250, 350, 'black' );

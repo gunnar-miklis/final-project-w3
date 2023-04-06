@@ -8,17 +8,12 @@ let buttonStartGame;
 let gameIsStarted = false;
 function startLevel() {
     gameIsStarted = true;
-    loop();
-
-    // BUG: throws 'UNDEFINED' ?? 
-    console.log( selectedLevel.value() )
-    // innerHTML :  "<option value=\"undefined\">Select Level</option><option value=\"undefined\">Level 1</option><option value=\"undefined\">Level 2</option><option value=\"Level 3\">Level 3</option>"
-    // innerText :  "Select Level\nLevel 1\nLevel 2\nLevel 3"
-
+    // make sure it's possible to start the game again, after finishing all levels. Because "The End." sets noLoop();
+    loop(); 
     // loop through levelList
     levelList.forEach( (level) => {
         // get the level (which is selected in dropdown menu) from levelList
-        if ( selectedLevel.value() === level.name ) { // BUG 
+        if ( selectedLevel.value() === level.name ) {
         // construct this level (eg. new Level3() )
         activeLevel = level.construct;
         // also set level id
@@ -35,7 +30,8 @@ let activeLevelId = 0;
 let selectedLevel; // dropdown menu
 // add levels to the dropdown menu, but ONLY, when they have been started already.
 function addFinishedLevelToDropdown() {
-    levelList.forEach( (level) => { if ( level.isStarted ) selectedLevel.option( level.name ) });
+    // create <option> tags
+    levelList.forEach( (level) => { if ( level.isStarted ) selectedLevel.option( level.name, level.name ) });
 }
 function nextLevel() {
     // increment level number
