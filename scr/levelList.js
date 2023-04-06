@@ -2,7 +2,7 @@ const levelList = [
     {
         id: 0,
         name: "Select Level",
-        description: "landing page",
+        description: "level 0",
         construct: new Level0(),
         isStarted: true,
     }, 
@@ -23,22 +23,36 @@ const levelList = [
     {
         id: 3,
         name: "Level 3",
-        description: "the floor is lava",
+        description: "wait for it",
         construct: new Level3(),
         isStarted: false,
     },
     {
         id: 4,
         name: "Level 4",
-        description: "more difficult",
+        description: "the floor is lava",
         construct: new Level4(),
         isStarted: false,
     },
     {
         id: 5,
         name: "Level 5",
-        description: "don't trust your eyes",
+        description: "more difficult",
         construct: new Level5(),
+        isStarted: false,
+    },
+    {
+        id: 6,
+        name: "Level 6",
+        description: "don't trust your eyes",
+        construct: new Level6(),
+        isStarted: false,
+    },
+    {
+        id: 7,
+        name: "Level 7",
+        description: "start is exit",
+        construct: new Level7(),
         isStarted: false,
     },
 ]
