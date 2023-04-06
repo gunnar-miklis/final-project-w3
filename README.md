@@ -1,5 +1,5 @@
-# This Level Again Clone
-Final Project for Module-1 of Ironhack's webDev Bootcamp 2023
+# Wait...? That level, again?
+Final Project for Module-1 week 3 of Ironhack's webDev Bootcamp 2023
 
 ## Structure
 ### sketch.js 
@@ -23,10 +23,13 @@ Final Project for Module-1 of Ironhack's webDev Bootcamp 2023
 #### Platform() extends Obstacles()
 * initialize platforms
 * Method: .standOnPlatform()
+#### Key() extends Obstacles()
+* initialize platforms
+* Method: .collectKey()
 #### Exit() extends Obstacles()
 * initialize platforms
 * Method: .standOnPlatform()
-* Method: .winOnExit()
+* Method: .win()
 #### Trap() extends Obstacles()
 * initialize traps 
 * Method: .deathOnCollision()
