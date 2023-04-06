@@ -101,13 +101,17 @@ canvas {
   justify-content: space-between;
   align-items: baseline;
   width: 100%;
-  color: #777;
+  color: #888;
+  font-size: 90%;
 }
 p:last-child {
   text-align: right;
 }
 a {
   font-weight: 700;
-  color: #333;
+  color: #555;
   text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
