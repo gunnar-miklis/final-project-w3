@@ -8,6 +8,10 @@ html, body {
 body {
   font-family: 'Sofia Sans Condensed', sans-serif;
   background-color: #eee;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 /* NOTE: canvas  */
@@ -17,6 +21,7 @@ main {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  width: 800px;
 }
 #div-p5 {
   position: relative;
@@ -87,4 +92,22 @@ canvas {
 }
 #menu button:hover {
   color: white;
+}
+
+/* NOTE: credits  */
+#credits {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  color: #777;
+}
+p:last-child {
+  text-align: right;
+}
+a {
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
 }
