@@ -9,14 +9,16 @@ function preload() { // DONE
 // NOTE: setup items 
 function setup() { // DONE 
   // create canvas
-  createCanvas( WIDTH, HEIGHT ).parent('#div-p5');
+  createCanvas( WIDTH, HEIGHT ).parent('#p5-div');
   
   // create dropdown menu
   selectedLevel = createSelect().parent('#menu');
+  selectedLevel.class('dropdown')
   addFinishedLevelToDropdown();
 
   // create start button
-  buttonStartGame = createButton('Start Level').parent('#menu').mousePressed( startLevel );
+  buttonStartGame = createButton('Start').parent('#menu').mousePressed( startLevel );
+  buttonStartGame.class('start-btn')
 }
 
 // NOTE: draw items 
@@ -28,6 +30,7 @@ function draw() { // DONE
     game.eventListener(activeLevel);
     if ( doCharacterReset ) {
       game.character.resetCharacter();
+      characterHasKey = levelList[activeLevelId].hasKey
       doCharacterReset = false;
     }
   }
