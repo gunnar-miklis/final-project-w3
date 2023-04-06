@@ -5,7 +5,6 @@ class Character { // DONE
         this.h = 50;
         this.velocity = 0;
         this.gravity = 1;
-        this.hasKey = false;
         this.jumps = true;
 
         this.x = WIDTH - this.w;
@@ -13,11 +12,10 @@ class Character { // DONE
     }
     printTextCharacter(message, color, seconds) {
         fill( color );
-        textFont( fontMedium );
         textFont("Segoe UI Symbol");
-        textSize( 20 );
+        textSize( 30 );
         textAlign( CENTER );
-        text( message, game.character.x + 25, game.character.y - 35 ); // text above character's head
+        text( message, game.character.x + 25, game.character.y - 30 ); // text above character's head
         if ( seconds ) { noLoop(); sleep(seconds).then( () => { loop() } ) } // wait
     }
 
@@ -46,13 +44,13 @@ class Character { // DONE
             image( game.characterImg, this.x, this.y, this.w, this.h );
         }
 
-        if ( this.hasKey ) this.printTextCharacter('🔑','orange');
+        if ( characterHasKey ) this.printTextCharacter('🔑','orange');
     }
     resetCharacter() { // DONE 
+        this.velocity = 0;
         this.x = WIDTH - this.w;
         this.y = HEIGHT - this.h;
         this.jumps = true;
-        this.hasKey = false;
         counter = 0;
     }
     
@@ -77,35 +75,5 @@ class Character { // DONE
         do {
             this.velocity = 10;
         } while ( this.y > HEIGHT - this.h );
-    }
-
-    // NOTE: platfrom interactions 
-    stayOnPlatform( platformY ) { // DONE 
-            this.y = platformY - this.h; // stay on platform
-            this.velocity = 0; // reset velocity
-    }
-    collectKeyOnPlatform() { // DONE 
-        // if character has no key: collect key
-        // else: message "already have key"
-        if ( !this.hasKey ) {
-            this.hasKey = true
-            // this.printTextCharacter('key\ncollected','orange',900); // TESTING 
-        } // else { this.printTextCharacter('key already\ncollected','blue') } // TESTING 
-
-        // feature for level 3
-        if ( frameCount%40 === 0 ) counter++;
-    }
-    winsOnPlatform() { // DONE 
-        // if player has key: win and go to next level
-        // else: message "need to collect key first"
-        if ( this.hasKey ) {
-            // game.printTextCentered('Success!','green',1500); // TESTING 
-            nextLevel();
-        } // else { this.printTextCharacter('need a\nkey first','blue') } // TESTING 
-    }
-    diesOnPlatform() { // DONE 
-        // reset player stats, position and jumps
-        game.printTextCentered('potato takes a lava bath','red',1500);
-        this.resetCharacter();
     }
 }
