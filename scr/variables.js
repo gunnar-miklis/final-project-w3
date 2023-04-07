@@ -41,7 +41,7 @@ let selectedLevel; // dropdown menu
 function addFinishedLevelToDropdown() {
     // create <option> tags
     levelList.forEach( (level) => { if ( level.isStarted ) selectedLevel.option( level.name, level.name ) });
-    // levelList.forEach( (level) => { selectedLevel.option( level.description, level.name ) }); // TESTING 
+    // levelList.forEach( (level) => { selectedLevel.option( level.description, level.name ) }); // TESTING: show all levels by default 
 }
 function nextLevel() {
     // transition screen

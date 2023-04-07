@@ -14,6 +14,7 @@ body {
   align-items: center;
 }
 
+/* DONE:  */
 /* hide game on mobile devices and tablets */
 @media only screen and (max-width: 991px) {
   #switch-to-desktop {
@@ -25,6 +26,7 @@ body {
   }
 }
 
+/* DONE:  */
 /* show game on desktop devices */
 @media only screen and (min-width: 992px)  {
   #switch-to-desktop {

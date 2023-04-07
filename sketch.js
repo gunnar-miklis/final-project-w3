@@ -25,7 +25,7 @@ function setup() { // DONE
 function draw() { // DONE 
   if ( gameIsStarted ) {
     clear();
-    game.placeCharacter();
+    game.placeCharacter(); // COMMENT: maybe draw the character inside the level() (at each level re-start), instead of global draw 
     game.createLevel(activeLevel);
     game.eventListener(activeLevel);
     if ( doCharacterReset ) {
