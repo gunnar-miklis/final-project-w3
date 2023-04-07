@@ -1,12 +1,12 @@
 // NOTE: General 
 const WIDTH = 800;
 const HEIGHT = 500;
-let fontRegular, fontMedium, fontBold, fontBlack;
+let fontRegular, fontMedium;
 
 // NOTE: Character related 
-let doCharacterReset = false;
-let characterHasKey = false;
-let counter = 0;
+let doCharacterReset = false; // make sure the last task in draw is always the character reset function
+let characterHasKey = false; // value comes from levelList object
+let counter = 0; // used in level 4 "wait for it"
 
 // NOTE: Game start related 
 let buttonStartGame;

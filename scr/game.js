@@ -25,8 +25,6 @@ class Game { // DONE
     preloadFonts() { // DONE 
         fontRegular = loadFont('assets/fonts/SofiaSansCondensed-Regular.ttf');
         fontMedium = loadFont('assets/fonts/SofiaSansCondensed-SemiBold.ttf');
-        fontBold = loadFont('assets/fonts/SofiaSansCondensed-Bold.ttf');
-        fontBlack = loadFont('assets/fonts/SofiaSansCondensed-Black.ttf');
     }
 
     // NOTE: draw 
