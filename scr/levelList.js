@@ -67,7 +67,7 @@ const levelList = [
     {
         id: 8,
         name: "Level 8",
-        description: "click on That level",
+        description: "press on That level",
         construct: new Level8(),
         isStarted: false,
         hasKey: false,

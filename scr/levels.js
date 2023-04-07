@@ -183,7 +183,7 @@ class Level8 extends Levels { // DONE
 
     constructor() {
         super();
-        this.title = "click on That level";
+        this.title = "press on That level";
     }
 
     events(character) {
