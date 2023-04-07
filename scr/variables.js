@@ -1,75 +1,56 @@
 // NOTE: General 
-const WIDTH = 800;
+const WIDTH = 800;                                                      // canvas size
 const HEIGHT = 500;
 let fontRegular, fontMedium;
 
 // NOTE: Character related 
-let doCharacterReset = false; // make sure the last task in draw is always the character reset function
-let characterHasKey = false; // value comes from levelList object
-let counter = 0; // used in level 4 "wait for it"
+let doCharacterReset = false;                                           // make sure the last task in draw is always the character reset function
+let characterHasKey = false;                                            // value comes from levelCollection{}
+let isAllowedToPass = false;                                            // used in level 4 "wait for it"
 
 // NOTE: Game start related 
-let buttonStartGame;
-let gameIsStarted = false;
-function startLevel() {
-    gameIsStarted = true;
-    // make sure it's possible to start the game again, after finishing all levels. Because "The End." sets noLoop();
-    loop(); 
-    // loop through levelList
-    levelList.forEach( (level) => {
-        // get the level (which is selected in dropdown menu) from levelList
-        if ( selectedLevel.value() === level.name ) {
-        // construct this level (eg. new Level3() )
-        activeLevel = level.construct;
-        // also set level id
-        activeLevelId = level.id;
+let buttonStartGame;                                                    // start button
+let gameIsStarted = false;                                              // draw() will be disabled by this. start button will enable draw(), later
 
-        if ( level.hasKey ) { characterHasKey = level.hasKey }
+function startLevel() { // DONE 
+    gameIsStarted = true;                                               // allows if condition in draw() to pass
+    loop();                                                             // make sure it's possible to start the game again, after finishing all levels. because after last level is finished, game is set to: noLoop()
+    levelCollection.forEach( (level) => {                               // get the level (which is selected in dropdown menu) from levelCollection{}
+        if ( selectedLevel.value() === level.name ) {
+            activeLevel = level.construct();                            // construct this level [new Level1()] and store in variable (will be an argument later)
+            activeLevelid = level.id;                                   // also set level id
         };
-        // reset characters position
-        game.character.resetCharacter();
-        characterHasKey = false;
-        doCharacterReset = true;
-    })
+    });
+    doCharacterReset = true;                                            // reset characters position. make sure reset is done at the very end of draw()
 }
 
 // NOTE: Level related 
-let activeLevel;
-let activeLevelId = 0;
-let selectedLevel; // dropdown menu
-// add levels to the dropdown menu, but ONLY, when they have been started already.
-function addFinishedLevelToDropdown() {
-    // create <option> tags
-    levelList.forEach( (level) => { if ( level.isStarted ) selectedLevel.option( level.name, level.name ) });
-    // levelList.forEach( (level) => { selectedLevel.option( level.description, level.name ) }); // TESTING: show all levels by default 
+let activeLevel;                                                        // level will be constructed inside: new Level1()
+let activeLevelid = 0;                                                  // help to match next level in levelCollection{}
+let selectedLevel;                                                      // dropdown menu
+
+function addFinishedLevelToDropdown() {                                 // add levels to the dropdown menu (create <option> tags)...
+    levelCollection.forEach( (level) => { 
+        if ( level.isStarted ) {                                        // ...but ONLY when they have been started already.
+            selectedLevel.option( level.name, level.name );             // .option( name, [value] ) 
+        };
+    });
+    // TESTING only: show all levels by default 
+    // levelCollection.forEach( (level) => { selectedLevel.option( level.instructions, level.name ) });
 }
-function nextLevel() {
-    // transition screen
-    game.printTextCentered( 'Success!',1000 );
-
-    // increment level number
-    activeLevelId++;
-
-    // set level isStarted to: true
-    if( activeLevelId < levelList.length ) levelList[activeLevelId].isStarted = true;
-
-    // refresh dropwdown menu
-    addFinishedLevelToDropdown();
-
-    // loop leve list again
-    levelList.forEach( (level) => {
-        // pick next level
-        if ( activeLevelId === level.id ){
-            // construct next level
-            activeLevel = level.construct;
-            // set dropdown selection to current game
-            document.querySelector('#menu select').selectedIndex = activeLevelId;
-        }
-        
-        if ( level.hasKey ) { characterHasKey = level.hasKey }
-        // reset characters position
-        // needs to be called as most-last, AFTER events(). using condition in draw()
-        doCharacterReset = true;
-    })
-
+function nextLevel() { // DONE 
+    game.transitionScreen( 'Success!',1000 );                           // transition screen
+    activeLevelid++;                                                    // increment level number
+    if( activeLevelid < levelCollection.length ) {                      // set level isStarted to: true
+        levelCollection[activeLevelid].isStarted = true;
+    }
+    addFinishedLevelToDropdown();                                       // refresh/redraw dropwdown menu
+    levelCollection.forEach( (level) => {                               // get next level from levelCollection{} according to incremented active-level-id
+        if ( activeLevelid === level.id ){
+            activeLevel = level.construct();                            // construct next level
+            document.querySelector('#menu select')                      // select dropdown menu
+                        .selectedIndex = activeLevelid;                 // set active-dropdown-selection to current game
+        };
+    });
+    doCharacterReset = true;                                            // reset characters position. make sure reset is done at the very end of draw()
 }

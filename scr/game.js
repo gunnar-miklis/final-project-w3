@@ -1,19 +1,24 @@
 class Game { // DONE 
 
     constructor() {
-        this.character = new Character();
+        this.character = new Character();                                       // construct character // COMMENT: it might be better to call the character with each level in the Levels() class. 
         this.characterImg;
         this.characterImgLeft;
         this.characterImgRight;
     }
-    printTextCentered( message, seconds ) {
+
+    // NOTE: transition screen to print a text or message for a certain amount of time 
+    transitionScreen( message, seconds ) { // DONE 
         background(0);
-        fill( 'white' )
+        fill( 'white' );
         textSize( 40 );
         textFont( fontMedium );
         textAlign( CENTER );
         text( message, WIDTH/2, HEIGHT/2 );
-        if ( seconds ) { noLoop(); sleep(seconds).then( () => { loop() } ) } // wait
+        if ( seconds ) {                                                        // wait functionality:
+            noLoop();                                                           // pause game for a certain amount of time
+            sleep(seconds).then( () => { loop() } );                            // calls a new Promise(), then continue game
+        };
     }
 
     // NOTE: preload 
@@ -30,17 +35,18 @@ class Game { // DONE
     // NOTE: draw 
     placeCharacter() { // DONE 
         this.character.update();
-        if ( this.character.y === HEIGHT - this.character.h ) { this.character.jumps = true };
     }
-    createLevel(level) { // DONE 
-        if ( level ) { level.update() }
-        if ( activeLevelId > levelList.length-1 ) {
-            activeLevelId--;
-            game.printTextCentered('Thanks for playing.\nto be continued...?');
-            noLoop();
-        } 
+    createLevel( level ) { // DONE 
+        if ( level ) { level.update() }                                         // only update level, when it's available from the levelCollection{}
+        if ( activeLevelid === levelCollection.length ) {                       // if last level is finished
+            activeLevelid--;                                                    // decrement activeLevelid by 1, because nextLevel() incremented it earlier, beyond the levelCollection{}
+            game.transitionScreen('Thanks for playing.\nto be continued...?');  // print a message on the transition screen
+            noLoop();                                                           // stop game animation
+        };
     }
-    eventListener(level) { // DONE
-        if ( level ) { level.events(game.character) }
+    eventListener( level ) { // DONE
+        if ( level ) {                                                          // only listen for events, when level is available from the levelCollection{}
+            level.events( game.character )                                      // character needs to be an arument for events, since in events character and obstacles will be compared
+        };                     
     }
 }
