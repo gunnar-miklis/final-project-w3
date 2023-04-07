@@ -191,7 +191,7 @@ class Level8 extends Levels { // DONE
         this.exit.winOnCollision(character);
         this.trap1.deathOnCollision(character);
         this.trap2.deathOnCollision(character);
-        document.querySelector('h2').addEventListener('click',()=>{ characterHasKey = true })
+        document.querySelector('.title h2').addEventListener('click',()=>{ characterHasKey = true })
     }
 }
 
