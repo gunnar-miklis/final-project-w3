@@ -38,7 +38,7 @@ class Game { // DONE
         if ( level ) { level.update() }
         if ( activeLevelId > levelList.length-1 ) {
             activeLevelId--;
-            game.printTextCentered('The End.');
+            game.printTextCentered('Thanks for playing ♡\nto be continued...?');
             noLoop();
         } 
     }
