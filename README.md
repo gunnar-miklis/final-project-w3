@@ -56,8 +56,11 @@ This game is inspired by the lovely game [That Level Again](https://play.google.
 #### Level() extends Levels()
 * many levels with different conditions to win
 #### list of level ideas may be here...
-* please add more :)
+* __please add more :)__
 
 ### levelList.js
 * object containing all levels
 * also containing relevant properties for each level
+
+## Improvements and Suggestions
+* spawn character with each level start ( level.update() ) instead of in general game.draw()
