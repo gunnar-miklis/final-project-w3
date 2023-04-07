@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,40 +11,39 @@
     <meta name="description" content="final project for week3 of ironhack webDev bootcamp 2023">
     <link sizes="32x32" type="image/ico" rel="icon" href="assets/images/dancing-potato-right.png">
 
-
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <h2 class="switch-to-desktop">Game only works on Desktop, and requires arrow key input.</h2>
     <h2 class="switch-to-desktop">Switch to a desktop device, or resize your window to a bigger size.</h2>
 
     <main>
 
-      <!-- p5 canvas wrapper -->
-      <div id="p5-div">
+        <!-- p5 canvas wrapper -->
+        <div id="p5-div">
 
-        <!-- headings -->
-        <div class="title">
-          <h1>Wait...?</h1>
-          <h2>That level, again?</h2>
+            <!-- headings -->
+            <div class="title">
+                <h1>Wait...?</h1>
+                <h2>That level, again?</h2>
+            </div>
+
+            <!-- menu to select and start levels -->
+            <div id="menu"></div>
+
         </div>
 
-        <!-- menu to select and start levels -->
-        <div id="menu"></div>
-        
-      </div>
-
-      <!-- some credits below canvas -->
-      <div class="credits">
-        <p>This game was made by <a href="">Gunnar Miklis</a> for educational purpose. <br/>During Ironhack WebDev Bootcamp 2023.</p>
-        <p>This game is inspired by the lovely game <a href="https://play.google.com/store/apps/details?id=ru.iamtagir.game.android">That Level Again</a>.<br/>Please check it out!</p>
-      </div>
+        <!-- some credits below canvas -->
+        <div class="credits">
+            <p>This game was made by <a href="">Gunnar Miklis</a> for educational purpose. <br />During Ironhack WebDev Bootcamp 2023.</p>
+            <p>This game is inspired by the lovely game <a href="https://play.google.com/store/apps/details?id=ru.iamtagir.game.android">That Level Again</a>.<br />Please check it out!</p>
+        </div>
     </main>
-    
+
     <script src="scr/variables.js"></script>
     <script src="scr/obstacles.js"></script>
     <script src="scr/character.js"></script>
@@ -52,5 +52,6 @@
     <script src="scr/game.js"></script>
     <script src="sketch.js"></script>
 
-  </body>
+</body>
+
 </html>
