@@ -58,7 +58,7 @@ This game is inspired by the lovely game [That Level Again](https://play.google.
 #### list of level ideas may be here...
 * __please add more :)__
 
-### levelList.js
+### levelCollection.js
 * object containing all levels
 * also containing relevant properties for each level
 
