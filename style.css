@@ -1,137 +1,137 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300;400;500;600;700;900;1000&display=swap');
 
 /* NOTE: general  */
-html, body {
-  margin: 0;
-  padding: 0;
-}
 body {
-  font-family: 'Sofia Sans Condensed', sans-serif;
-  background-color: #eee;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-/* DONE:  */
-/* hide game on mobile devices and tablets */
-@media only screen and (max-width: 991px) {
-  #switch-to-desktop {
-    padding-top: 90px;
-    text-align: center;
-  }
-  main {
-    display: none;
-  }
-}
-
-/* DONE:  */
-/* show game on desktop devices */
-@media only screen and (min-width: 992px)  {
-  #switch-to-desktop {
-    display: none;
-  }
-
-  /* NOTE: canvas  */
-  main {
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    background-color: #eee;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     margin-top: 90px;
-    max-width: 100%;
-  }
-  #p5-div {
-    position: relative;
-    box-shadow: 0 0 8px rgba(0,0,0,0.6);
-    border: 5px solid black;
-    border-radius: 5px;
-    margin-top: 10px;
+}
 
-    display:flex;
-    flex-flow: column nowrap;
-    justify-content: flex-end;
-    align-items: flex-start;
-  }
-  canvas {
-    background-color: white;
-  }
+/* DONE:  */
+/* hide game on mobile devices and tablets */
+/* show message to resize winodow or switch to desktop */
+@media only screen and (max-width: 991px) {
+    .switch-to-desktop {
+        text-align: center;
+    }
 
-  /* NOTE: title  */
-  .title {
-    position: absolute;
-    top: 0;
-    left: 10px;
-  }
-  .title h1,
-  .title h2 {
-    margin: 0;
-  }
-  .title h1 {
-    margin-top: 15px;
-  }
+    main {
+        display: none;
+    }
+}
 
-  /* NOTE: menu  */
-  #menu {
-    position: absolute;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-flow: column nowrap;
-  }
-  .dropdown, #menu h3 {
-    margin-bottom: 10px;
-  }
-  .start-btn, 
-  .dropdown {
-    padding: 7px 5px;
-    font-family: 'Sofia Sans Condensed', sans-serif;
-    font-size: 110%;
-    font-weight: 700;
-    text-align: left;
-    border-radius: 3px;
-  }
-  .dropdown {
-    border: 3px solid #ebebeb;
-    background-color: #eee;
-    color: black;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  }
-  .start-btn {
-    border: 3px solid #383838;
-    background-color: #333;
-    color: #eee;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  }
-  .dropdown:hover, 
-  .start-btn:hover {
-    box-shadow: 0 0 4px 1px rgba(0,0,0,0.6);
-    cursor: pointer;
-  }
-  .start-btn:hover {
-    color: white;
-  }
+/* DONE:  */
+/* show game on desktop devices */
+@media only screen and (min-width: 992px) {
+    .switch-to-desktop {
+        display: none;
+    }
 
-  /* NOTE: credits  */
-  .credits {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: baseline;
-    width: 100%;
-    color: #888;
-    font-size: 90%;
-  }
-  p:last-child {
-    text-align: right;
-  }
-  a {
-    font-weight: 700;
-    color: #555;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+    /* NOTE: canvas  */
+    main {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        /* margin-top: 90px; */
+        max-width: 100%;
+    }
+
+    #p5-div {
+        position: relative;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+        border: 5px solid black;
+        border-radius: 5px;
+        margin-top: 10px;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+    canvas {
+        background-color: white;
+    }
+
+    /* NOTE: title  */
+    .title {
+        position: absolute;
+        top: 0;
+        left: 10px;
+    }
+    .title h1,
+    .title h2 {
+        margin: 0;
+    }
+    .title h1 {
+        margin-top: 15px;
+    }
+
+    /* NOTE: menu  */
+    #menu {
+        position: absolute;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .dropdown,
+    #menu h3 {
+        margin-bottom: 10px;
+    }
+    .start-btn,
+    .dropdown {
+        padding: 7px 5px;
+        font-family: 'Sofia Sans Condensed', sans-serif;
+        font-size: 110%;
+        font-weight: 700;
+        text-align: left;
+        border-radius: 3px;
+    }
+    .dropdown {
+        border: 3px solid #ebebeb;
+        background-color: #eee;
+        color: black;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+    .start-btn {
+        border: 3px solid #383838;
+        background-color: #333;
+        color: #eee;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+    .dropdown:hover,
+    .start-btn:hover {
+        box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+    }
+    .start-btn:hover {
+        color: white;
+    }
+
+    /* NOTE: credits  */
+    .credits {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+        color: #888;
+        font-size: 90%;
+    }
+    p:last-child {
+        text-align: right;
+    }
+    a {
+        font-weight: 700;
+        color: #555;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
 }
