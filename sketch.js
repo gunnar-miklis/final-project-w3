@@ -13,12 +13,12 @@ function setup() { // DONE
   
   // create dropdown menu
   selectedLevel = createSelect().parent('#menu');
-  selectedLevel.class('dropdown')
+  selectedLevel.class('dropdown'); // assign class
   addFinishedLevelToDropdown();
 
   // create start button
   buttonStartGame = createButton('Start').parent('#menu').mousePressed( startLevel );
-  buttonStartGame.class('start-btn')
+  buttonStartGame.class('start-btn'); // assign class
 }
 
 // NOTE: draw items 
@@ -26,7 +26,7 @@ function draw() { // DONE
   if ( gameIsStarted ) {
     clear();
     game.placeCharacter(); // COMMENT: maybe draw the character inside the level() (at each level re-start), instead of global draw 
-    game.createLevel(activeLevel);
+    game.createLevel(activeLevel); // based on loaded level (from levelList), draw level
     game.eventListener(activeLevel);
     if ( doCharacterReset ) {
       game.character.resetCharacter();
