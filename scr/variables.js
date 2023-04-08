@@ -29,7 +29,7 @@ let activeLevel;                                                        // level
 let activeLevelid = 0;                                                  // help to match next level in levelCollection{}
 let selectedLevel;                                                      // dropdown menu
 
-function addFinishedLevelToDropdown() {                                 // add levels to the dropdown menu (create <option> tags)...
+function addStartedLevelToDropdown() {                                  // add levels to the dropdown menu (create <option> tags)...
     levelCollection.forEach( (level) => { 
         if ( level.isStarted ) {                                        // ...but ONLY when they have been started already.
             selectedLevel.option( level.name, level.name );             // .option( name, [value] ) 
@@ -44,7 +44,7 @@ function nextLevel() { // DONE
     if( activeLevelid < levelCollection.length ) {                      // set level isStarted to: true
         levelCollection[activeLevelid].isStarted = true;
     }
-    addFinishedLevelToDropdown();                                       // refresh/redraw dropwdown menu
+    addStartedLevelToDropdown();                                        // refresh/redraw dropwdown menu
     levelCollection.forEach( (level) => {                               // get next level from levelCollection{} according to incremented active-level-id
         if ( activeLevelid === level.id ){
             activeLevel = level.construct();                            // construct next level

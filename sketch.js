@@ -13,7 +13,7 @@ function setup() { // DONE
     selectedLevel = createSelect()                                      // create dropdown menu
                         .parent('#menu')                                // anchor into menu
                         .class('dropdown');                             // assign class  for styling
-    addFinishedLevelToDropdown();                                       // refresh/reload dropdown menu
+    addStartedLevelToDropdown();                                        // refresh/reload dropdown menu
 
     buttonStartGame = createButton('Start')                             // create start button
                         .parent('#menu')                                // anchor into menu

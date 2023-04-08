@@ -11,7 +11,7 @@ body {
     margin-top: 90px;
 }
 
-/* DONE:  */
+/* DONE  */
 /* hide game on mobile devices and tablets */
 /* show message to resize winodow or switch to desktop */
 @media only screen and (max-width: 991px) {
@@ -24,7 +24,7 @@ body {
     }
 }
 
-/* DONE:  */
+/* DONE  */
 /* show game on desktop devices */
 @media only screen and (min-width: 992px) {
     .switch-to-desktop {
