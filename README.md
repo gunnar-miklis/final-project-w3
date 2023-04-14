@@ -1,9 +1,10 @@
 # Wait...? That level, again?
 ![screenshot](./Screenshot.png)
 ## About
-This game was made by me for education purpose.
-It's the final Project for Module-1 Week3 of Ironhack's Web Development Bootcamp 2023
-This game is inspired by the lovely game [That Level Again](https://play.google.com/store/apps/details?id=ru.iamtagir.game.android). Please check it out!
+Navigate the tiny dancin' potato to the exit. But wait? That level... again?
+
+> It's the final Project for Module-1 Week3 of Ironhack's Web Development Bootcamp 2023. This game was made by me for education purpose.
+> This game is inspired by the lovely game [That Level Again](https://play.google.com/store/apps/details?id=ru.iamtagir.game.android). Please check it out!
 
 ## Code Structure
 ### index.html
