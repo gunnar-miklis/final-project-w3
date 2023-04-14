@@ -4,7 +4,7 @@ It's the final Project for Module-1 Week3 of Ironhack's Web Development Bootcamp
 This game is inspired by the lovely game [That Level Again](https://play.google.com/store/apps/details?id=ru.iamtagir.game.android). Please check it out!
 ![screenshot](./Screenshot.png)
 
-## Structure
+## Code Structure
 ### index.html
 * web page for the p5 canvas
 * handling all the js files
