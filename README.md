@@ -1,12 +1,13 @@
 # Wait...? That level, again?
-## About
-_Navigate the tiny dancin' potato to the exit. But wait? That level... again?_
+### About
+Navigate the tiny dancin' potato to the exit. But wait? That level... again?
 
+### Description
 This game is the final Project #1 for Module-1 Week3 of Ironhack's Web Development Bootcamp 2023. The game was made for education purpose. It's is inspired by the lovely game [That Level Again](https://play.google.com/store/apps/details?id=ru.iamtagir.game.android). Please check it out!
 
 ![screenshot](./Screenshot.png)
 
-## Project #1 Guidelines: 
+## 🎯 Project #1 Guidelines: 
 ### Technical Requirements
 Your app must:
 1. Render a game in the browser.
@@ -26,62 +27,58 @@ Your app must:
 * The URL of the slides for your game’s presentation.
 * You must present your game during Project #1 final presentations (last day of Project #1 time).
 
-## My Code Structure
-### index.html
+## 💻 My Code Structure
+### Layout and Styling
+#### index.html
 * web page for the p5 canvas
 * handling all the js files
-
-### style.css
+#### style.css
 * general styling, design and layout
 
-### variables.js
+### 🛠️ Scripts
+#### variables.js
 * contains all global variables
 * contains all global functions
 * contains startGame() and nextLevel() function
-
-### sketch.js 
+#### sketch.js 
 * using p5.js
 * initialize canvas and draw
 * contains functions for input (keypress, etc.)
-
-### game.js
+#### game.js
 * class Game()
 * initialize game and essential functions
-
-### character.js
+#### character.js
 * class Char()
 * initialize character
 * functionality of characters movments
-
-### obstacles.js
+#### obstacles.js
 * class Obstacles()
 * creates basic level with obstacles
 * will contain different win-conditions for each level
-#### Platform() extends Obstacles()
-* initialize platforms
-* Method: .standOnPlatform()
-#### Key() extends Obstacles()
-* initialize platforms
-* Method: .collectKey()
-#### Exit() extends Obstacles()
-* initialize platforms
-* Method: .standOnPlatform()
-* Method: .win()
-#### Trap() extends Obstacles()
-* initialize traps 
-* Method: .deathOnCollision()
-
-### levels.js
+    #### Platform() extends Obstacles()
+    * initialize platforms
+    * Method: .standOnPlatform()
+    #### Key() extends Obstacles()
+    * initialize platforms
+    * Method: .collectKey()
+    #### Exit() extends Obstacles()
+    * initialize platforms
+    * Method: .standOnPlatform()
+    * Method: .win()
+    #### Trap() extends Obstacles()
+    * initialize traps 
+    * Method: .deathOnCollision()
+#### levels.js
 * class Levels()
 * contains default level and level events
-#### Level() extends Levels()
-* many levels with different conditions to win
-#### list of level ideas may be here...
-* __please add more :)__
+    #### Level() extends Levels()
+    * many levels with different conditions to win
 
-### levelCollection.js
+### 🗃️ Level Data
+#### levelCollection.js
 * object containing all levels
 * also containing relevant properties for each level
 
 ## Improvements and Suggestions
+* add more levels :)
 * spawn character with each level start ( level.update() ) instead of in general game.draw()
