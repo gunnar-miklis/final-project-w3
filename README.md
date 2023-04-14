@@ -79,6 +79,6 @@ Your app must:
 * object containing all levels
 * also containing relevant properties for each level
 
-## Improvements and Suggestions
+## 🏗️ Improvements and Suggestions
 * add more levels :)
 * spawn character with each level start ( level.update() ) instead of in general game.draw()
