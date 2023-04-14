@@ -1,7 +1,7 @@
 # Wait...? That level, again?
 This game was made by me for education purpose.
 It's the final Project for Module-1 Week3 of Ironhack's Web Development Bootcamp 2023
-
+![screenshot](./Screenshot.png)
 This game is inspired by the lovely game [That Level Again](https://play.google.com/store/apps/details?id=ru.iamtagir.game.android). Please check it out!
 
 
